@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="icon" type="img/png" href="images/favicon.png">
+	<link rel="stylesheet" type="text/css" href="webs/radar.css">
+	<link rel="stylesheet" type="text/css" href="webs/style.css">
+	<meta charset="utf-8">
+	<title>Poor man's Wiki</title>
+</head>
+<body>
+	<div class="container">
+		<h1 class="heading">Poor man's Wiki</h1>
+		<div class="search-wrapper">
+			<input type="text" id="search" class="search search-box">
+		</div>
+		<ul id="lists">
+		</ul>
+	</div>
+	<script src="webs/wikis.js"></script>
+	<script src="webs/htmlpreview.min.js"></script>
+	<script>HTMLPreview.replaceAssets();</script>
+	<script src="webs/jquery-1.11.3.js"></script>
+	<script>
+		/*
+		 * Fuzzy
+		 * https://github.com/myork/fuzzy
+		 *
+		 * Copyright (c) 2012 Matt York
+		 * Licensed under the MIT license.
+		 */
+
+		(function() {
+
+		var root = this;
+
+		var fuzzy = {};
+
+		// Use in node or in browser
+		if (typeof exports !== 'undefined') {
+		  module.exports = fuzzy;
+		} else {
+		  root.fuzzy = fuzzy;
+		}
+
+		// Return all elements of `array` that have a fuzzy
+		// match against `pattern`.
+		fuzzy.simpleFilter = function(pattern, array) {
+		  return array.filter(function(str) {
+		    return fuzzy.test(pattern, str);
+		  });
+		};
+
+		// Does `pattern` fuzzy match `str`?
+		fuzzy.test = function(pattern, str) {
+		  return fuzzy.match(pattern, str) !== null;
+		};
+
+		// If `pattern` matches `str`, wrap each matching character
+		// in `opts.pre` and `opts.post`. If no match, return null
+		fuzzy.match = function(pattern, str, opts) {
+		  opts = opts || {};
+		  var patternIdx = 0
+		    , result = []
+		    , len = str.length
+		    , totalScore = 0
+		    , currScore = 0
+		    // prefix
+		    , pre = opts.pre || ''
+		    // suffix
+		    , post = opts.post || ''
+		    // String to compare against. This might be a lowercase version of the
+		    // raw string
+		    , compareString =  opts.caseSensitive && str || str.toLowerCase()
+		    , ch;
+
+		  pattern = opts.caseSensitive && pattern || pattern.toLowerCase();
+
+		  // For each character in the string, either add it to the result
+		  // or wrap in template if it's the next string in the pattern
+		  for(var idx = 0; idx < len; idx++) {
+		    ch = str[idx];
+		    if(compareString[idx] === pattern[patternIdx]) {
+		      ch = pre + ch + post;
+		      patternIdx += 1;
+
+		      // consecutive characters should increase the score more than linearly
+		      currScore += 1 + currScore;
+		    } else {
+		      currScore = 0;
+		    }
+		    totalScore += currScore;
+		    result[result.length] = ch;
+		  }
+
+		  // return rendered string if we have a match for every char
+		  if(patternIdx === pattern.length) {
+		    // if the string is an exact match with pattern, totalScore should be maxed
+		    totalScore = (compareString === pattern) ? Infinity : totalScore;
+		    return {rendered: result.join(''), score: totalScore};
+		  }
+
+		  return null;
+		};
+
+		// The normal entry point. Filters `arr` for matches against `pattern`.
+		// It returns an array with matching values of the type:
+		//
+		//     [{
+		//         string:   '<b>lah' // The rendered string
+		//       , index:    2        // The index of the element in `arr`
+		//       , original: 'blah'   // The original element in `arr`
+		//     }]
+		//
+		// `opts` is an optional argument bag. Details:
+		//
+		//    opts = {
+		//        // string to put before a matching character
+		//        pre:     '<b>'
+		//
+		//        // string to put after matching character
+		//      , post:    '</b>'
+		//
+		//        // Optional function. Input is an entry in the given arr`,
+		//        // output should be the string to test `pattern` against.
+		//        // In this example, if `arr = [{crying: 'koala'}]` we would return
+		//        // 'koala'.
+		//      , extract: function(arg) { return arg.crying; }
+		//    }
+		fuzzy.filter = function(pattern, arr, opts) {
+		  if(!arr || arr.length === 0) {
+		    return [];
+		  }
+		  if (typeof pattern !== 'string') {
+		    return arr;
+		  }
+		  opts = opts || {};
+		  return arr
+		    .reduce(function(prev, element, idx, arr) {
+		      var str = element;
+		      if(opts.extract) {
+		        str = opts.extract(element);
+		      }
+		      var rendered = fuzzy.match(pattern, str, opts);
+		      if(rendered != null) {
+		        prev[prev.length] = {
+		            string: rendered.rendered
+		          , score: rendered.score
+		          , index: idx
+		          , original: element
+		        };
+		      }
+		      return prev;
+		    }, [])
+
+		    // Sort by score. Browsers are inconsistent wrt stable/unstable
+		    // sorting, so force stable by using the index in the case of tie.
+		    // See http://ofb.net/~sethml/is-sort-stable.html
+		    .sort(function(a,b) {
+		      var compare = b.score - a.score;
+		      if(compare) return compare;
+		      return a.index - b.index;
+		    });
+		};
+
+
+		}());
+	</script>
+	<script>
+
+
+    function displaySearchResults() {
+
+      // The user-entered value we're searching for
+      var search = $('#search').val();
+
+      var options = {
+          pre:  '<b>'    // Wrap each character in a <b> tag to bold
+        , post: '</b>'
+
+        // Each element in wikiLists is an object, not a string. We can pass an `extract`
+        // function that is called on each element in the array to extract the string
+        // to fuzzy search against. In this case, element.title
+        , extract: function(element) {
+            return element.title;
+          }
+      };
+
+      // Filter!
+      var filtered = fuzzy.filter(search, wikiLists, options);
+
+      // Map the results to the html we want generated
+      var results = filtered.map(function(entry){
+        return '<li><a href="' + entry.original.url + '">' + entry.string + '</a></li>';
+      });
+
+      // Update the html
+      $('#lists').html(results.join(''));
+    }
+
+    $(function() {
+
+      // List the initial characters
+      displaySearchResults();
+
+      // Filter the characters on each change of the textbox
+      $('#search').keyup(displaySearchResults);
+    });
+	</script>
+</body>
+</html>
