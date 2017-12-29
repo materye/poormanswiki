@@ -1,6 +1,17 @@
 # Poor man's Wiki
 
-A simple offine Wiki using Chromium and Markdown Viewer.
+A simple offline Wiki for Linux using Chromium and Markdown Viewer.
+
+![screenshot](./images/screenshot.png)
+
+## Features
+
+* Work offline
+* Manage your Wiki using Markdown
+* Get a nice overview of all your files
+* Use Fuzzysearch to find what you need
+* Only requires Chromium, Markdown Viewer and Bash
+* *May also work with Firefox + Markdown Viewer (not tested)*
 
 ## Project
 ```
@@ -21,9 +32,10 @@ A simple offine Wiki using Chromium and Markdown Viewer.
 └── wiki-update.sh                  (required, run after adding new file)
 ```
 
+
 ## Setting up Chromium
 
-* Install [Markdown Viewer](https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk?utm_source=chrome-ntp-icon) for chromiume/chrome
+* Install [Markdown Viewer](https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk?utm_source=chrome-ntp-icon) for chromium/chrome
 * Go to *chrome://extensions/* and enable *"Allow access to file URLs"*
 
 
