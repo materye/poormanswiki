@@ -2,7 +2,7 @@
 
 A simple offline Wiki for Linux using Chromium and Markdown Viewer.
 
-![screenshot](./images/screenshot.png)
+<div style='position:relative;padding-bottom:54%'><iframe src='https://gfycat.com/ifr/CourteousFixedAfricanjacana' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0' allowfullscreen></iframe></div>
 
 ## Features
 
@@ -14,22 +14,25 @@ A simple offline Wiki for Linux using Chromium and Markdown Viewer.
 * *May also work with Firefox + Markdown Viewer (not tested)*
 
 ## Project
+
 ```
 .
 ├── images
-│   ├── favicon.png                 (required, icon shown in browser)
 │   ├── learn_regex.png             (demo, delete it!)
 │   └── sublimetext-vhdl-demo.gif   (demo, delete it!)
 ├── webs
+│   ├── favicon.png                 (required, icon shown in browser)
 │   ├── htmlpreview.min.js          (required)
 │   ├── jquery-1.11.3.js            (required)
 │   ├── radar.css                   (required, copied from markdown viewer)
 │   ├── style.css                   (required, modifications)
 │   └── wikis.js                    (required, created by wiki-update.sh)
-├── index.html                      (required, start page)
-├── Learn Regex.md                  (demo, delete it!)
-├── sublimetext-vhdl.md             (demo, delete it!)
-└── wiki-update.sh                  (required, run after adding new file)
+├── wikis
+│   ├── Learn Regex.md              (demo, delete it!)
+│   ├── sublimetext-vhdl.md         (demo, delete it!)
+│   └── wiki-update.sh              (required, run after adding new file)
+├── index.html
+└── README.md
 ```
 
 

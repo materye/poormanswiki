@@ -93,7 +93,7 @@ It may help to remember `p` for port, then `w` for write (to buffer).  The other
 
 The following animated GIF demonstrates a portion of the port copying feature.
 
-![Port Copying Demonstration](./images/sublimetext-vhdl-demo.gif)
+![Port Copying Demonstration](../images/sublimetext-vhdl-demo.gif)
 
 **Subprogram Interface Copy/Paste Functions**
 

@@ -34,7 +34,7 @@ validate a username:
 
 <br/><br/>
 <p align="center">
-  <img src="./images/learn_regex.png" alt="Regular expression">
+  <img src="../images/learn_regex.png" alt="Regular expression">
 </p>
 
 Above regular expression can accept the strings `john_doe`, `jo-hn_doe` and
