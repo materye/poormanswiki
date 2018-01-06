@@ -10,7 +10,7 @@ A simple offline Wiki for Linux using Chromium and Markdown Viewer.
 * Manage your Wiki using Markdown
 * Get a nice overview of all your files
 * Use Fuzzysearch to find what you need
-* Only requires Chromium, Markdown Viewer and Bash
+* Only requires Chromium, Markdown Viewer and Bash or Powershell
 * *May also work with Firefox + Markdown Viewer (not tested)*
 
 ## Project
@@ -42,15 +42,26 @@ A simple offline Wiki for Linux using Chromium and Markdown Viewer.
 * Go to *chrome://extensions/* and enable *"Allow access to file URLs"*
 
 
-## Setting up Poor man's Wiki
+## Setting up Poor man's Wiki on Linux
 
 * Download the Repo
 * Run the  *wiki-update.sh*
 * Open *index.html* in your browser
 
-## Workflow
+## Setting up Poor man's Wiki on Linux
+
+* Download the Repo
+* Run the  *wiki-update.ps1*
+* Open *index.html* in your browser
+
+## Workflow on Linux
 
 * Create/Add a new markdown file and run *wiki-update.sh*
+* Refresh your browser
+
+## Workflow on Linux
+
+* Create/Add a new markdown file and run *wiki-update.ps1*
 * Refresh your browser
 
 ## Sources
