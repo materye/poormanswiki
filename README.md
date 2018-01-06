@@ -59,7 +59,7 @@ A simple offline Wiki for Linux using Chromium and Markdown Viewer.
 * Create/Add a new markdown file and run *wiki-update.sh*
 * Refresh your browser
 
-## Workflow on Linux
+## Workflow on Windows
 
 * Create/Add a new markdown file and run *wiki-update.ps1*
 * Refresh your browser
