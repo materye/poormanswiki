@@ -1,8 +1,15 @@
 # Poor man's Wiki
 
-A simple offline Wiki for Linux using Chromium and Markdown Viewer.
+
+A simple offline Wiki using Chromium and Markdown Viewer.
 
 -![screenshot](./images/screenshot.png)
+
+## HEY YOU!
+
+I'm starting to add default wiki entries. If you want something to be part of
+the default wiki just send a pull request.
+
 
 ## Features
 
@@ -48,7 +55,7 @@ A simple offline Wiki for Linux using Chromium and Markdown Viewer.
 * Run the  *wiki-update.sh*
 * Open *index.html* in your browser
 
-## Setting up Poor man's Wiki on Linux
+## Setting up Poor man's Wiki on Windows
 
 * Download the Repo
 * Run the  *wiki-update.ps1*
