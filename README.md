@@ -1,4 +1,4 @@
-# Poor man's Wiki
+# Poor man's Wiki (Linux, Windows, Mac)
 
 
 A simple offline Wiki using Chromium and Markdown Viewer.
@@ -24,9 +24,7 @@ the default wiki just send a pull request.
 
 ```
 .
-├── images
-│   ├── learn_regex.png             (demo, delete it!)
-│   └── sublimetext-vhdl-demo.gif   (demo, delete it!)
+├── images                          (store your images here)
 ├── webs
 │   ├── favicon.png                 (required, icon shown in browser)
 │   ├── htmlpreview.min.js          (required)
@@ -34,9 +32,7 @@ the default wiki just send a pull request.
 │   ├── radar.css                   (required, copied from markdown viewer)
 │   ├── style.css                   (required, modifications)
 │   └── wikis.js                    (required, created by wiki-update.sh)
-├── wikis
-│   ├── Learn Regex.md              (demo, delete it!)
-│   ├── sublimetext-vhdl.md         (demo, delete it!)
+├── wikis                           (store your wiki entries here)
 │   └── wiki-update.sh              (required, run after adding new file)
 ├── index.html                      (required, start page)
 └── README.md
@@ -49,33 +45,24 @@ the default wiki just send a pull request.
 * Go to *chrome://extensions/* and enable *"Allow access to file URLs"*
 
 
-## Setting up Poor man's Wiki on Linux
+## Setting up Poor man's Wiki
 
 * Download the Repo
-* Run the  *wiki-update.sh*
+* Run the  script:
+	- **Linux/Mac**: *wiki-update.sh*
+	- **Windows**:   *wiki-update.ps1*
 * Open *index.html* in your browser
 
-## Setting up Poor man's Wiki on Windows
 
-* Download the Repo
-* Run the  *wiki-update.ps1*
-* Open *index.html* in your browser
+## Workflow
 
-## Workflow on Linux
-
-* Create/Add a new markdown file and run *wiki-update.sh*
+* Create/Add a new markdown file and run the script
 * Refresh your browser
 
-## Workflow on Windows
-
-* Create/Add a new markdown file and run *wiki-update.ps1*
-* Refresh your browser
 
 ## Sources
 
 I pretty much did nothing it's all just copy and paste.
 
-* [sublimetext-vhdl](https://github.com/Remillard/VHDL-Mode)
-* [Learn Regex](https://github.com/zeeshanu/learn-regex)
 * [javascript](http://htmlpreview.github.io/?https://github.com/mattyork/fuzzy/blob/master/examples/wikipedia.html)
 * [favicon](https://www.google.de/search?q=brain+icon&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiDmbXXxq3YAhWJJ-wKHTrXAfYQ_AUICigB&biw=1362&bih=470)
