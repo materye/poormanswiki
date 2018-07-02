@@ -5,12 +5,6 @@ A simple offline Wiki using Chromium and Markdown Viewer.
 
 -![screenshot](./images/screenshot.png)
 
-## HEY YOU!
-
-I'm starting to add default wiki entries. If you want something to be part of
-the default wiki just send a pull request.
-
-
 ## Features
 
 * Work offline
